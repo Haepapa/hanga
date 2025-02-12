@@ -1,0 +1,60 @@
+services:
+  traefik:
+    image: traefik:v3.2.1
+    ports:
+      - 80:80
+      - 443:443
+      - 19132:19132/udp
+      - 19133:19133/udp
+      - 25565:25565/udp
+      - 19132:19132/tcp
+      - 19133:19133/tcp
+      - 25565:25565/tcp
+    networks:
+      - proxy
+      - appwrite
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - letsencrypt:/letsencrypt
+    command:
+      - --api.dashboard=true
+      - --log.level=INFO
+      - --accesslog=true
+      - --providers.docker.network=proxy
+      - --providers.docker.exposedByDefault=false
+
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entryPoints.web.http.redirections.entrypoint.scheme=https
+
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.asDefault=true
+      - --entrypoints.websecure.http.tls.certresolver=certresolver
+
+      - --entrypoints.minecraft-bedrock32.address=:19132/udp
+      - --entrypoints.minecraft-bedrock33.address=:19133/udp
+      - --entrypoints.minecraft-java65.address=:25565/udp
+
+      - --entrypoints.minecraft-bedrock32-tcp.address=:19132/tcp
+      - --entrypoints.minecraft-bedrock33-tcp.address=:19133/tcp
+      - --entrypoints.minecraft-java65-tcp.address=:25565/tcp
+
+      - --certificatesresolvers.certresolver.acme.email=${ADMIN_EMAIL}
+      - --certificatesresolvers.certresolver.acme.tlschallenge=true
+      - --certificatesresolvers.certresolver.acme.storage=/letsencrypt/acme.json
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik-dashboard.rule=(Host(`${TRAEFIK_URL_ROOT}`) || Host(`www.${TRAEFIK_URL_ROOT}`))
+      - traefik.http.routers.traefik-dashboard.service=api@internal
+
+      - traefik.http.middlewares.wwwredirect.redirectregex.regex=^https://www\.(.*)
+      - traefik.http.middlewares.wwwredirect.redirectregex.replacement=https://$${1}
+      - traefik.http.routers.traefik-dashboard.middlewares=wwwredirect
+
+      - traefik.http.routers.traefik-dashboard.middlewares=auth
+      - traefik.http.middlewares.auth.basicauth.users=${TRAEFIK_AUTH_UPL}
+    depends_on:
+      - timotewbcom
+      - haepapacom
+      - minecraft
+      - appwrite
