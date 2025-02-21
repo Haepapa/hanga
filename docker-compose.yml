@@ -16,6 +16,3 @@ volumes:
   appwrite-functions:
   appwrite-builds:
   appwrite-config:
-  minecraft-world:
-  minecraft-world-nether:
-  minecraft-world-the-end:

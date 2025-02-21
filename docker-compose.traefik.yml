@@ -54,7 +54,4 @@ services:
       - traefik.http.routers.traefik-dashboard.middlewares=auth
       - traefik.http.middlewares.auth.basicauth.users=${TRAEFIK_AUTH_UPL}
     depends_on:
-      - timotewbcom
-      - haepapacom
-      - minecraft
       - appwrite
