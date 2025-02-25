@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     networks:
       - appwrite
-      - proxy
+      - main-net
     labels:
       - traefik.enable=true
       - traefik.http.services.appwrite_api.loadbalancer.server.port=80

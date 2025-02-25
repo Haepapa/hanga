@@ -1,13 +1,12 @@
 networks:
-  proxy:
-    name: proxy
+  main-net:
+    name: main-net
   appwrite:
     name: appwrite
   runtimes:
     name: runtimes
 
 volumes:
-  letsencrypt:
   appwrite-mariadb:
   appwrite-redis:
   appwrite-cache:

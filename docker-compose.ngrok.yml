@@ -1,0 +1,8 @@
+services:
+  ngrok:
+    stdin_open: true
+    tty: true
+    environment:
+      - NGROK_AUTHTOKEN=`${NGROK_AUTHTOKEN}`
+    image: ngrok/ngrok
+    command: http https://10.0.0.102:10000
