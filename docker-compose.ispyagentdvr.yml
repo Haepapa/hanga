@@ -2,7 +2,6 @@
 services:
   ispyagentdvr:
     image: mekayelanik/ispyagentdvr:latest
-    container_name: ispyagentdvr
     environment:
       - PUID=1000
       - PGID=1000
@@ -17,3 +16,5 @@ services:
       - 3478:3478/udp
       - 50000-50100:50000-50100/udp
     restart: unless-stopped
+    networks:
+      - main-net
