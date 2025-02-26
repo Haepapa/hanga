@@ -6,3 +6,5 @@ services:
       - NGROK_AUTHTOKEN=`${NGROK_AUTHTOKEN}`
     image: ngrok/ngrok
     command: http https://`${NGROK_IP}`:`${NGROK_PORT}`
+    networks:
+      - main-net
