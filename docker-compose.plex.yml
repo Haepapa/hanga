@@ -1,0 +1,16 @@
+---
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Pacific/Auckland
+      - VERSION=docker
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ${PLEX_CONFIG}:/config
+      - ${PLEX_MEDIA}:/Plex
+    restart: unless-stopped
+    runtime: nvidia
