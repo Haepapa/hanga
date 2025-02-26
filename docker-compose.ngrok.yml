@@ -5,4 +5,4 @@ services:
     environment:
       - NGROK_AUTHTOKEN=`${NGROK_AUTHTOKEN}`
     image: ngrok/ngrok
-    command: http https://10.0.0.102:10000
+    command: http https://`${NGROK_IP}`:`${NGROK_PORT}`
