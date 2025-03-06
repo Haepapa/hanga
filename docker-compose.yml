@@ -16,5 +16,3 @@ volumes:
   appwrite-builds:
   appwrite-config:
   portainer_data:
-    external: true
-    name: portainer_data
