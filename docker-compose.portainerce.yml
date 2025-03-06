@@ -3,7 +3,6 @@ services:
     ports:
       - 8000:8000
       - 9443:9443
-    container_name: portainer
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
