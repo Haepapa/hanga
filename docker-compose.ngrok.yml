@@ -4,6 +4,7 @@ services:
     tty: true
     environment:
       - NGROK_AUTHTOKEN
+    restart: unless-stopped
     image: ngrok/ngrok
     command: http https://${NGROK_IP}:${NGROK_PORT}
     networks:
