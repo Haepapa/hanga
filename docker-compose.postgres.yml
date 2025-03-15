@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ${POSTGRES_DATA}:/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 8080:8080
