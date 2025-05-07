@@ -9,6 +9,8 @@ services:
       - TZ=Pacific/Auckland
       - VERSION=docker
       - NVIDIA_VISIBLE_DEVICES=all
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     volumes:
       - ${PLEX_CONFIG}:/config
       - ${PLEX_MEDIA}:/Plex

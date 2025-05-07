@@ -8,6 +8,8 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN}
       - TWINGATE_LOG_ANALYTICS=v2
       - TWINGATE_LOG_LEVEL=3
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     sysctls:
       net.ipv4.ping_group_range: "0 2147483647"
     networks:

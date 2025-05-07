@@ -7,6 +7,8 @@ services:
       - PGID=1000
       - AGENTDVR_WEBUI_PORT=8090
       - TZ=Pacific/Auckland
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     volumes:
       - ${ISPY_ROOT_DIR}/XML:/AgentDVR/Media/XML
       - ${ISPY_ROOT_DIR}/Media:/AgentDVR/Media/WebServerRoot/Media
