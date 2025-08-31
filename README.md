@@ -4,6 +4,9 @@
 
 A collection of Docker Compose files for setting up applications on local dev environments. Each app has its own Compose file, managed via a Makefile. Environment variables are loaded from a .env file (not included in the repo). Designed for quick and easy development and deployment of new applications using the same underlying servers.
 
+### Setup
+Craete `.env` file with the necessary environment variables.
+
 ### Execution
 
 Run `sudo make up` to download images and start.
