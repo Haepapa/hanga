@@ -12,7 +12,9 @@ volumes:
   appwrite-redis:
   appwrite-cache:
   appwrite-uploads:
+  appwrite-imports:
   appwrite-certificates:
   appwrite-functions:
+  appwrite-sites:
   appwrite-builds:
   appwrite-config:
