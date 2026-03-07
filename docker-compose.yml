@@ -16,3 +16,4 @@ volumes:
   appwrite-builds:
   appwrite-config:
   portainer_data:
+  filearchiver-data:

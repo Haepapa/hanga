@@ -1,0 +1,17 @@
+services:
+  filearchiver:
+    image: ghcr.io/haepapa/filearchiver:prod
+    container_name: filearchiver
+    volumes:
+      # backup paths
+      - /mnt/work/share/archive:/data/input
+      - /mnt/data/share/Archive:/data/output
+      # persistent app data
+      - filearchiver-data:/data
+    command: ["-init", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
+    # command: ["-output", "/data/output", "-input", "/data/input", "-config", "/data/config.yaml", "-ignorefile", "/config/.archiveignore"]
+    restart: "no"    
+    networks:
+      - main-net
+
+# TODO: deploy. the filearchiver-data lcoation needs to exist before the init run and contain config and ignore files.
