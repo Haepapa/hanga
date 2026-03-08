@@ -8,10 +8,12 @@ services:
       - /mnt/data/share/Archive:/data/output
       # persistent app data
       - filearchiver-data:/data
-    command: ["-init", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
+    # run first
+    command: ["-setup", "-config", "/config/config.yaml"]
+    # then run
+    #command: ["-init", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
+    # run ongoing
     # command: ["-output", "/data/output", "-input", "/data/input", "-config", "/data/config.yaml", "-ignorefile", "/config/.archiveignore"]
     restart: "no"    
     networks:
       - main-net
-
-# TODO: deploy. the filearchiver-data lcoation needs to exist before the init run and contain config and ignore files.
