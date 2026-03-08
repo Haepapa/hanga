@@ -14,6 +14,6 @@ services:
     #command: ["-init", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
     # run ongoing
     # command: ["-output", "/data/output", "-input", "/data/input", "-config", "/data/config.yaml", "-ignorefile", "/config/.archiveignore"]
-    restart: "no"    
+    restart: "no"
     networks:
       - main-net
