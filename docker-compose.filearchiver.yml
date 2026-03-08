@@ -7,13 +7,13 @@ services:
       - /mnt/work/share/archive:/data/input
       - /mnt/data/share/Archive:/data/output
       # persistent app data
-      - filearchiver-data:/data
+      - filearchiver-data:/config
     # run first
     command: ["-setup"]
     # then run
-    #command: ["-init", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
+    # command: ["-init", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
     # run ongoing
-    # command: ["-output", "/data/output", "-input", "/data/input", "-config", "/data/config.yaml", "-ignorefile", "/config/.archiveignore"]
+    # command: ["-output", "/data/output", "-input", "/data/input", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
     restart: "no"
     networks:
       - main-net
