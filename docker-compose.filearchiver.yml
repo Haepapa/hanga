@@ -9,7 +9,7 @@ services:
       # persistent app data
       - filearchiver-data:/data
     # run first
-    command: ["-setup", "-config", "/config/config.yaml"]
+    command: ["-setup"]
     # then run
     #command: ["-init", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
     # run ongoing
