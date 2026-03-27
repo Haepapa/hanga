@@ -4,7 +4,7 @@ services:
     container_name: openclaw
     ports:
       - "18789:18789"
-      - "8080:8080" # Added for the Web UI/Nginx access
+      - "9090:8080" # Added for the Web UI/Nginx access
     depends_on:
       - ollama
       - browser
