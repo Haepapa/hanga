@@ -6,6 +6,8 @@ services:
       - "11434:11434"
     volumes:
       - ollama-data:/root/.ollama
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     deploy:
       resources:
         reservations:
