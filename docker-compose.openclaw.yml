@@ -20,7 +20,6 @@ services:
       - OPENCLAW_GATEWAY_TOKEN=openclas-local
       - OPENCLAW_NO_RESPAWN=1
       - NODE_COMPILE_CACHE=/data/.openclaw/compile-cache
-      - OPENCLAW_GATEWAY_CONTROLUI_ALLOWINSECUREAUTH=true
     networks:
       - main-net
 
