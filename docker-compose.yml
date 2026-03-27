@@ -18,3 +18,4 @@ volumes:
   portainer_data:
   filearchiver-data:
   ollama-data:
+  openclaw-data:
