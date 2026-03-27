@@ -15,5 +15,6 @@ services:
       OLLAMA_BASE_URL: http://ollama:11434
       OLLAMA_MODEL: qwen3:4b
       OLLAMA_API_KEY: "ollama-local"
+      OPENCLAW_GATEWAY_TOKEN: "openclas-local"
     networks:
       - main-net
