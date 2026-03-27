@@ -17,3 +17,4 @@ volumes:
   appwrite-config:
   portainer_data:
   filearchiver-data:
+  ollama-data:
