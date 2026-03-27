@@ -9,11 +9,11 @@ services:
       # persistent app data
       - filearchiver-data:/config
     # run first
-    command: ["-setup"]
+    # command: ["-setup", "/config"]
     # then run
     # command: ["-init", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
     # run ongoing
-    # command: ["-output", "/data/output", "-input", "/data/input", "-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
+    command: ["-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
     restart: "no"
     networks:
       - main-net
