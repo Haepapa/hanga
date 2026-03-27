@@ -14,3 +14,5 @@ services:
               count: all # Use all available GPUs; can be set to '1' or a specific number
               capabilities: ["gpu"]
     restart: always
+    networks:
+      - main-net
