@@ -21,6 +21,8 @@ services:
       - OPENCLAW_NO_RESPAWN=1
       - NODE_COMPILE_CACHE=/data/.openclaw/compile-cache
       - OPENCLAW_ALLOWED_ORIGINS=*
+      - OPENCLAW_GATEWAY_CONTROLUI_ALLOWEDORIGINS="*"
+      - OPENCLAW_GATEWAY_URL=http://<server ip address>:18789
     networks:
       - main-net
 
