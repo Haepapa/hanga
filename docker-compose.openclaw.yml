@@ -6,6 +6,8 @@ services:
       - "18789:18789"
     depends_on:
       - ollama
+    volumes:
+      - openclaw-data:/data
     labels:
       - com.centurylinklabs.watchtower.enable=true
     environment:
