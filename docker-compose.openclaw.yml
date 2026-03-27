@@ -13,17 +13,17 @@ services:
     labels:
       - com.centurylinklabs.watchtower.enable=true
     environment:
+      - OPENCLAW_GATEWAY_TRUSTED_PROXIES=127.0.0.1
+      - OPENCLAW_GATEWAY_CONTROLUI_ALLOWED_ORIGINS="*"
+      
+      - OPENCLAW_GATEWAY_URL=http://<my server ip>:18789
+      
       - LLM_PROVIDER=ollama
       - OLLAMA_BASE_URL=http://ollama:11434
       - OLLAMA_MODEL=qwen3:4b
-      - OLLAMA_API_KEY=ollama-local
       - OPENCLAW_GATEWAY_TOKEN=openclas-local
       - OPENCLAW_NO_RESPAWN=1
       - NODE_COMPILE_CACHE=/data/.openclaw/compile-cache
-      - OPENCLAW_ALLOWED_ORIGINS=*
-      - OPENCLAW_GATEWAY_CONTROLUI_ALLOWEDORIGINS="*"
-      - OPENCLAW_GATEWAY_URL=http://<server ip address>:18789
-      - OPENCLAW_GATEWAY_TRUSTEDPROXIES=127.0.0.1
       - OPENCLAW_GATEWAY_CONTROLUI_ALLOWINSECUREAUTH=true
     networks:
       - main-net
