@@ -1,21 +1,7 @@
 networks:
   main-net:
     name: main-net
-  appwrite:
-    name: appwrite
-  runtimes:
-    name: runtimes
 
 volumes:
-  appwrite-mariadb:
-  appwrite-redis:
-  appwrite-cache:
-  appwrite-uploads:
-  appwrite-certificates:
-  appwrite-functions:
-  appwrite-builds:
-  appwrite-config:
   portainer_data:
-  filearchiver-data:
   ollama-data:
-  openclaw-data:
