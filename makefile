@@ -1,4 +1,4 @@
-COMPOSE_FILES=-f docker-compose.yml -f docker-compose.watchtower.yml -f docker-compose.portainerce.yml -f docker-compose.ollama.yml
+COMPOSE_FILES=-f docker-compose.yml -f docker-compose.watchtower.yml -f docker-compose.portainerce.yml -f docker-compose.ollama.yml -f docker-compose.hermes.yml
 
 
 up:
