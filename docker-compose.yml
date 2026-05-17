@@ -17,5 +17,6 @@ volumes:
   appwrite-config:
   portainer_data:
   filearchiver-data:
+  filearchiver-thumbs:
   ollama-data:
   openclaw-data:
