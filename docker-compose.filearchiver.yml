@@ -1,8 +1,6 @@
 services:
   filearchiver:
     image: ghcr.io/haepapa/filearchiver:prod
-    ports:
-      - 8787:8080
     container_name: filearchiver
     volumes:
       # backup paths
@@ -17,5 +15,29 @@ services:
     # run ongoing
     command: ["-config", "/config/config.yaml", "-ignorefile", "/config/.archiveignore"]
     restart: "no"
+    networks:
+      - main-net
+
+  filearchiver-web:
+    image: ghcr.io/haepapa/filearchiver-web:latest
+    container_name: filearchiver-web
+    #user: "${UID:-1000}:${GID:-1000}"
+    ports:
+      - "9090:8080"
+    volumes:
+      # Share the same config volume so the web UI reads the same database
+      - filearchiver-data:/data/db
+      # Mount your archive directory (read access is sufficient unless you use delete/promote)
+      # - /path/to/archive:/data/archive
+      - /mnt/data/share/Archive:/data/archive
+      # Optional: persistent thumbnail cache (saves re-generation on restart)
+      - filearchiver-thumbs:/data/thumbs
+    # Add -readonly flag to disable all write/delete operations in the UI
+    command: ["-db", "/data/db/filearchiver.db", "-archive", "/data/archive",
+              "-thumbdir", "/data/thumbs", "-port", "8080"]
+    restart: unless-stopped
+    depends_on:
+      filearchiver:
+        condition: service_completed_successfully
     networks:
       - main-net
