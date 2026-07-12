@@ -34,7 +34,7 @@ services:
       - filearchiver-thumbs:/data/thumbs
     # Add -readonly flag to disable all write/delete operations in the UI
     command: ["-db", "/data/db/filearchiver.db", "-archive", "/data/output",
-              "-thumbdir", "/data/thumbs", "-port", "8080"]
+              "-thumbdir", "/data/thumbs", "-port", "8080", "-proxydir", "/data/proxies"]
     restart: unless-stopped
     # depends_on:
     #   filearchiver:
