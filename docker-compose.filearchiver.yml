@@ -29,15 +29,22 @@ services:
       - filearchiver-data:/data/db
       # Mount your archive directory (read access is sufficient unless you use delete/promote)
       # - /path/to/archive:/data/archive
-      - /mnt/data/share/Archive:/data/archive
+      - /mnt/data/share/Archive:/data/output
       # Optional: persistent thumbnail cache (saves re-generation on restart)
       - filearchiver-thumbs:/data/thumbs
     # Add -readonly flag to disable all write/delete operations in the UI
-    command: ["-db", "/data/db/filearchiver.db", "-archive", "/data/archive",
+    command: ["-db", "/data/db/filearchiver.db", "-archive", "/data/output",
               "-thumbdir", "/data/thumbs", "-port", "8080"]
     restart: unless-stopped
-    depends_on:
-      filearchiver:
-        condition: service_completed_successfully
+    # depends_on:
+    #   filearchiver:
+    #     condition: service_completed_successfully
     networks:
       - main-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
