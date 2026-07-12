@@ -41,6 +41,8 @@ services:
     #     condition: service_completed_successfully
     networks:
       - main-net
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     deploy:
       resources:
         reservations:
